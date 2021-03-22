@@ -20,9 +20,34 @@ namespace Bzs.Events
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private TemperaturFuehler fuehler;
+
         public MainWindow()
         {
             InitializeComponent();
+            this.fuehler = new TemperaturFuehler(18.5);
+        }
+
+        private void ButtonTermometer_Click(object sender, RoutedEventArgs e)
+        {
+            TemperaturAnzeigeView view = new TemperaturAnzeigeView(this.fuehler);
+            view.Show();
+        }
+
+        private void ButtonErhoehen_Click(object sender, RoutedEventArgs e)
+        {
+            this.fuehler.SetTemperatur(this.fuehler.Temperatur + 0.5);
+        }
+
+        private void ButtonReduzieren_Click(object sender, RoutedEventArgs e)
+        {
+            this.fuehler.SetTemperatur(this.fuehler.Temperatur - 0.5);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
